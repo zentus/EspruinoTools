@@ -1,5 +1,5 @@
 {
-  "name": "espruino",
+  "name": "@zentus/espruino",
   "version": "0.1.45",
   "description": "Command Line Interface and library for Communications with Espruino JavaScript Microcontrollers",
   "main": "index.js",
