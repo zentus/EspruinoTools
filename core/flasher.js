@@ -127,21 +127,21 @@
     // send read command
     sendCommand(0x11, function(err) {
       if (err) {
-        logger.error("Error sending command (" + err + ").");
+        logger.error("Error sending command ("+err+").");
         callback(err);
         return;
       }
       // send address
       sendData([(addr>>24)&0xFF,(addr>>16)&0xFF,(addr>>8)&0xFF,addr&0xFF], function(err) {
         if (err) {
-          logger.error("Error sending address. (" + err + ")");
+          logger.error("Error sending address. ("+err+")");
           callback(err);
           return;
         }
         // send amount of bytes we want
-        sendData([readBytes - 1], function (err) {
+        sendData([readBytes-1], function(err) {
           if (err) {
-            logger.error("Error while reading. (" + err + ")");
+            logger.error("Error while reading. ("+err+")");
             callback(err);
             return;
           }
@@ -161,13 +161,13 @@
     });
   };
 
-  var bodgeClock = function (callback) {
+  var bodgeClock = function(callback) {
     /* 1v43 bootloader ran APB1 at 9Mhz, which isn't enough for
     some STM32 silicon, which has a bug. Instead, set the APB1 clock
     using the bootloader write command, which will fix it up enough for
     flashing.   */
     var RCC_CFGR = 0x40021004;
-    readData(function (err, data) {
+    readData(function(err, data) {
       if (err) return callback(err);
       var word = (data[3]<<24) | (data[2]<<16) | (data[1]<<8) | data[0];
       logger.debug("RCC->CFGR = "+word);
@@ -238,7 +238,7 @@
       var len = binary.byteLength - offset;
       if (len > chunkSize) len = chunkSize;
       var data = new Uint8Array(binary, offset, len);
-      writeData(function (err) {
+      writeData(function(err) {
         if (err) { callback(err); return; }
         Espruino.Core.Status.incrementProgress(chunkSize);
         writer(offset + chunkSize);
@@ -247,7 +247,7 @@
     writer(flashOffset);
   };
 
-  var readAllData = function (binaryLength, flashOffset, callback) {
+  var readAllData = function(binaryLength, flashOffset, callback) {
     var data = new Uint8Array(flashOffset);
     var chunkSize = 256;
     logger.debug("Reading "+binaryLength+" bytes");

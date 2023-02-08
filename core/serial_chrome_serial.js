@@ -69,7 +69,7 @@ Author: Gordon Williams (gw@pur3.co.uk)
           logger.debug(cInfo);
           openCallback(cInfo);
         }
-      });
+    });
   };
 
   var closeSerial=function() {

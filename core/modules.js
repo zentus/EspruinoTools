@@ -86,7 +86,7 @@
       return d.MODULES.split(",").indexOf(module)>=0;
     // Otherwise try and figure it out from JSON
     if ("info" in d &&
-      "builtin_modules" in d.info &&
+        "builtin_modules" in d.info &&
         d.info.builtin_modules.indexOf(module)>=0)
       return true;
     // Otherwise assume we don't have it
@@ -135,9 +135,9 @@
       Espruino.Config.MODULE_URL.split("|").forEach(function (url) {
         url = url.trim();
         if (url.length!=0)
-          Espruino.Config.MODULE_EXTENSIONS.split("|").forEach(function (extension) {
-            urls.push(url + "/" + fullModuleName + extension);
-          })
+        Espruino.Config.MODULE_EXTENSIONS.split("|").forEach(function (extension) {
+          urls.push(url + "/" + fullModuleName + extension);
+        })
       });
     };
 

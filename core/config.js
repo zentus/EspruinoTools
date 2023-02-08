@@ -165,7 +165,7 @@
       Espruino.Config[key] = value;
       // Do the callback
       if (Espruino.Core.Config.data[key] !== undefined &&
-        Espruino.Core.Config.data[key].onChange !== undefined)
+          Espruino.Core.Config.data[key].onChange !== undefined)
         Espruino.Core.Config.data[key].onChange(value);
       // Save to synchronized storage...
       var data = {};

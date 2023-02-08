@@ -110,7 +110,7 @@ function init(options, callback) {
     return callback();
   }
   espruinoInitialised = true;
-
+  
   if (global.$ === undefined)
     global.$ = function() { return jqShim; };
   if (global.navigator === undefined)
@@ -178,7 +178,7 @@ function sendCode(port, code, callback) {
       data = new Uint8Array(data);
       for (var i=0;i<data.length;i++)
         response += String.fromCharCode(data[i]);
-    });
+     });
     Espruino.Core.Serial.open(port, function(status) {
       if (status === undefined) {
         logger.error("Unable to connect!");
